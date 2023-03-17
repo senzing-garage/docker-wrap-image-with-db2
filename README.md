@@ -117,7 +117,6 @@ The following steps show how to wrap existing containers with Db2 prerequisites.
     ```
 
 1. Build each of the Db2 compatible docker images in the list.
-   **Note:** There's a bug in BuildKit, so it is disabled.
    Example:
 
     ```console
@@ -128,7 +127,7 @@ The following steps show how to wrap existing containers with Db2 prerequisites.
         BASE_IMAGE_VERSION="${BASE_IMAGE_DATA[1]}"
         BASE_IMAGE_USER="${BASE_IMAGE_DATA[2]}"
         docker pull ${BASE_IMAGE_NAME}:${BASE_IMAGE_VERSION}
-        DOCKER_BUILDKIT=0  docker build \
+        docker build \
             --build-arg BASE_IMAGE=${BASE_IMAGE_NAME}:${BASE_IMAGE_VERSION} \
             --build-arg USER=${BASE_IMAGE_USER:-1001} \
             --tag ${BASE_IMAGE_NAME}-db2:${BASE_IMAGE_VERSION} \
