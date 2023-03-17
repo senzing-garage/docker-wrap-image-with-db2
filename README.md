@@ -43,6 +43,39 @@ describing where we can improve.   Now on with the show...
 - **Background knowledge:** This repository assumes a working knowledge of:
   - [Docker](https://github.com/Senzing/knowledge-base/blob/main/WHATIS/docker.md)
 
+## Download files
+
+1. Set these environment variable values:
+
+    ```console
+    export GIT_ACCOUNT=senzing
+    export GIT_REPOSITORY=docker-wrap-image-with-db2
+    export GIT_ACCOUNT_DIR=~/${GIT_ACCOUNT}.git
+    export GIT_REPOSITORY_DIR="${GIT_ACCOUNT_DIR}/${GIT_REPOSITORY}"
+    ```
+
+1. Follow steps in [clone-repository](https://github.com/Senzing/knowledge-base/blob/main/HOWTO/clone-repository.md) to install the Git repository.
+
+### Downloads
+
+#### Download v11.5.4_linuxx64_odbc_cli.tar.gz
+
+1. Visit [Download initial Version 11.1 clients and drivers](http://www-01.ibm.com/support/docview.wss?uid=swg21385217)
+    1. Click on "[IBM Data Server Driver for ODBC and CLI (CLI Driver)](https://epwt-www.mybluemix.net/software/support/trial/cst/programwebsite.wss?siteId=849&h=null&p=null)" link.
+    1. In the "Name" column, find "IBM Data Server Driver for ODBC and CLI (Linux AMD64 and Intel EM64T)".
+    1. In the "Download" column, Click the corresponding download link .
+    1. Download the file (e.g. `v11.5.4_linuxx64_odbc_cli.tar.gz`) to ${GIT_REPOSITORY_DIR}/[downloads](./downloads)/db2_odbc_cli.tar.gz directory.
+       The Docker file is expecting a file at that location.
+
+#### Download v11.1.4fp4a_jdbc_sqlj.tar.gz
+
+1. Visit [DB2 JDBC Driver Versions and Downloads](http://www-01.ibm.com/support/docview.wss?uid=swg21363866)
+    1. In DB2 Version 11.5 > JDBC 3.0 Driver version, click on "3.72.55" link for "v11.1 M4 FP7"
+    1. Click the "DSClients--jdbc_sqlj-11.1.4.7-FP007" link.
+    1. Click on "v11.1.4fp4a_jdbc_sqlj.tar.gz" link to download.
+    1. Download `v11.1.4fp7_jdbc_sqlj.tar.gz` to ${GIT_REPOSITORY_DIR}/[downloads](./downloads) directory.
+
+
 ## Create containers
 
 The following steps show how to wrap existing containers with Db2 prerequisites.
@@ -83,6 +116,7 @@ The following steps show how to wrap existing containers with Db2 prerequisites.
     ```
 
 1. Build each of the Db2 compatible docker images in the list.
+   **Note:** There's a bug in BuildKit, so it is disabled.
    Example:
 
     ```console
@@ -93,7 +127,7 @@ The following steps show how to wrap existing containers with Db2 prerequisites.
         BASE_IMAGE_VERSION="${BASE_IMAGE_DATA[1]}"
         BASE_IMAGE_USER="${BASE_IMAGE_DATA[2]}"
         docker pull ${BASE_IMAGE_NAME}:${BASE_IMAGE_VERSION}
-        docker build \
+        DOCKER_BUILDKIT=0  docker build \
             --build-arg BASE_IMAGE=${BASE_IMAGE_NAME}:${BASE_IMAGE_VERSION} \
             --build-arg USER=${BASE_IMAGE_USER:-1001} \
             --tag ${BASE_IMAGE_NAME}-db2:${BASE_IMAGE_VERSION} \

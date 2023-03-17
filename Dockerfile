@@ -1,10 +1,11 @@
 ARG BASE_IMAGE=debian:11.6-slim@sha256:8eaee63a5ea83744e62d5bf88e7d472d7f19b5feda3bfc6a2304cc074f269269
+ARG BUILDER_IMAGE=debian:11.6-slim@sha256:8eaee63a5ea83744e62d5bf88e7d472d7f19b5feda3bfc6a2304cc074f269269
 
 # -----------------------------------------------------------------------------
 # Stage: db2_builder
 # -----------------------------------------------------------------------------
 
-FROM ${BASE_IMAGE} as db2_builder
+FROM ${BUILDER_IMAGE} as db2_builder
 
 ENV REFRESHED_AT=2023-03-17
 
@@ -21,12 +22,12 @@ RUN apt-get update \
 # Copy the DB2 ODBC client code.
 # The tar.gz files must be independently downloaded before the docker build.
 
-ADD ./downloads/ibm_data_server_driver_for_odbc_cli_linuxx64_v11.1.tar.gz /opt/IBM/db2
-ADD ./downloads/v11.1.4fp4a_jdbc_sqlj.tar.gz /tmp/db2-jdbc-sqlj
+ADD ./downloads/v11.5.4_linuxx64_odbc_cli.tar.gz /opt/IBM/db2
+ADD ./downloads/v11.1.4fp7_jdbc_sqlj.tar.gz /download/db2-jdbc-sqlj
 
 # Extract ZIP file.
 
-RUN unzip -d /tmp/extracted-jdbc /tmp/db2-jdbc-sqlj/jdbc_sqlj/db2_db2driver_for_jdbc_sqlj.zip
+RUN unzip -d /download/extracted-jdbc /download/db2-jdbc-sqlj/jdbc_sqlj/db2_db2driver_for_jdbc_sqlj.zip
 
 # -----------------------------------------------------------------------------
 # Final stage
@@ -118,10 +119,10 @@ COPY --from=db2_builder [ \
     ]
 
 COPY --from=db2_builder [ \
-    "/tmp/extracted-jdbc/db2jcc.jar", \
-    "/tmp/extracted-jdbc/db2jcc4.jar", \
-    "/tmp/extracted-jdbc/sqlj.zip", \
-    "/tmp/extracted-jdbc/sqlj4.zip", \
+    "/download/extracted-jdbc/db2jcc.jar", \
+    "/download/extracted-jdbc/db2jcc4.jar", \
+    "/download/extracted-jdbc/sqlj.zip", \
+    "/download/extracted-jdbc/sqlj4.zip", \
     "/opt/IBM/db2/jdbc/" \
     ]
 
