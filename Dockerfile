@@ -46,76 +46,67 @@ USER root
 # Db2 support.
 
 COPY --from=db2_builder [ \
-    "/opt/IBM/db2/clidriver/adm/db2trc", \
-    "/opt/IBM/db2/clidriver/adm/" \
+    "/opt/IBM/db2/odbc_cli/clidriver/adm/db2trc", \
+    "/opt/IBM/db2/odbc_cli/clidriver/adm/" \
     ]
 
 COPY --from=db2_builder [ \
-    "/opt/IBM/db2/clidriver/bin/db2dsdcfgfill", \
-    "/opt/IBM/db2/clidriver/bin/db2ldcfg", \
-    "/opt/IBM/db2/clidriver/bin/db2lddrg", \
-    "/opt/IBM/db2/clidriver/bin/db2level", \
-    "/opt/IBM/db2/clidriver/bin/" \
+    "/opt/IBM/db2/odbc_cli/clidriver/bin/db2dsdcfgfill", \
+    "/opt/IBM/db2/odbc_cli/clidriver/bin/db2ldcfg", \
+    "/opt/IBM/db2/odbc_cli/clidriver/bin/db2lddrg", \
+    "/opt/IBM/db2/odbc_cli/clidriver/bin/db2level", \
+    "/opt/IBM/db2/odbc_cli/clidriver/bin/" \
     ]
 
 COPY --from=db2_builder [ \
-    "/opt/IBM/db2/clidriver/cfg/db2cli.ini.sample", \
-    "/opt/IBM/db2/clidriver/cfg/db2dsdriver.cfg.sample", \
-    "/opt/IBM/db2/clidriver/cfg/db2dsdriver.xsd", \
-    "/opt/IBM/db2/clidriver/cfg/" \
+    "/opt/IBM/db2/odbc_cli/clidriver/cfg/db2cli.ini.sample", \
+    "/opt/IBM/db2/odbc_cli/clidriver/cfg/db2dsdriver.cfg.sample", \
+    "/opt/IBM/db2/odbc_cli/clidriver/cfg/db2dsdriver.xsd", \
+    "/opt/IBM/db2/odbc_cli/clidriver/cfg/" \
     ]
 
 COPY --from=db2_builder [ \
-    "/opt/IBM/db2/clidriver/conv/alt/08501252.cnv", \
-    "/opt/IBM/db2/clidriver/conv/alt/12520850.cnv", \
-    "/opt/IBM/db2/clidriver/conv/alt/IBM00850.ucs", \
-    "/opt/IBM/db2/clidriver/conv/alt/IBM01252.ucs", \
-    "/opt/IBM/db2/clidriver/conv/alt/" \
+    "/opt/IBM/db2/odbc_cli/clidriver/conv/alt/08501252.cnv", \
+    "/opt/IBM/db2/odbc_cli/clidriver/conv/alt/12520850.cnv", \
+    "/opt/IBM/db2/odbc_cli/clidriver/conv/alt/IBM00850.ucs", \
+    "/opt/IBM/db2/odbc_cli/clidriver/conv/alt/IBM01252.ucs", \
+    "/opt/IBM/db2/odbc_cli/clidriver/conv/alt/" \
     ]
 
 COPY --from=db2_builder [ \
-    "/opt/IBM/db2/clidriver/include/sqlcli1.h", \
-    "/opt/IBM/db2/clidriver/include/sqlsystm.h", \
-    "/opt/IBM/db2/clidriver/include/sqlca.h", \
-    "/opt/IBM/db2/clidriver/include/sqlcli.h", \
-    "/opt/IBM/db2/clidriver/include/sql.h", \
-    "/opt/IBM/db2/clidriver/include/" \
+    "/opt/IBM/db2/odbc_cli/clidriver/lib/libdb2.so.1", \
+    "/opt/IBM/db2/odbc_cli/clidriver/lib/libdb2o.so.1", \
+    "/opt/IBM/db2/odbc_cli/clidriver/lib/" \
     ]
 
 COPY --from=db2_builder [ \
-    "/opt/IBM/db2/clidriver/lib/libdb2.so.1", \
-    "/opt/IBM/db2/clidriver/lib/libdb2o.so.1", \
-    "/opt/IBM/db2/clidriver/lib/" \
+    "/opt/IBM/db2/odbc_cli/clidriver/lib/icc/libgsk8cms_64.so", \
+    "/opt/IBM/db2/odbc_cli/clidriver/lib/icc/libgsk8iccs_64.so", \
+    "/opt/IBM/db2/odbc_cli/clidriver/lib/icc/libgsk8km_64.so", \
+    "/opt/IBM/db2/odbc_cli/clidriver/lib/icc/libgsk8ssl_64.so", \
+    "/opt/IBM/db2/odbc_cli/clidriver/lib/icc/libgsk8sys_64.so", \
+    "/opt/IBM/db2/odbc_cli/clidriver/lib/icc/" \
     ]
 
 COPY --from=db2_builder [ \
-    "/opt/IBM/db2/clidriver/lib/icc/libgsk8cms_64.so", \
-    "/opt/IBM/db2/clidriver/lib/icc/libgsk8iccs_64.so", \
-    "/opt/IBM/db2/clidriver/lib/icc/libgsk8km_64.so", \
-    "/opt/IBM/db2/clidriver/lib/icc/libgsk8ssl_64.so", \
-    "/opt/IBM/db2/clidriver/lib/icc/libgsk8sys_64.so", \
-    "/opt/IBM/db2/clidriver/lib/icc/" \
+    "/opt/IBM/db2/odbc_cli/clidriver/lib/icc/C/icc/icclib/ICCSIG.txt", \
+    "/opt/IBM/db2/odbc_cli/clidriver/lib/icc/C/icc/icclib/libicclib084.so", \
+    "/opt/IBM/db2/odbc_cli/clidriver/lib/icc/C/icc/icclib/" \
     ]
 
 COPY --from=db2_builder [ \
-    "/opt/IBM/db2/clidriver/lib/icc/C/icc/icclib/ICCSIG.txt", \
-    "/opt/IBM/db2/clidriver/lib/icc/C/icc/icclib/libicclib084.so", \
-    "/opt/IBM/db2/clidriver/lib/icc/C/icc/icclib/" \
-    ]
-
-COPY --from=db2_builder [ \
-    "/opt/IBM/db2/clidriver/msg/en_US.iso88591/db2admh.mo", \
-    "/opt/IBM/db2/clidriver/msg/en_US.iso88591/db2adm.mo", \
-    "/opt/IBM/db2/clidriver/msg/en_US.iso88591/db2clia1.lst", \
-    "/opt/IBM/db2/clidriver/msg/en_US.iso88591/db2clias.lst", \
-    "/opt/IBM/db2/clidriver/msg/en_US.iso88591/db2clih.mo", \
-    "/opt/IBM/db2/clidriver/msg/en_US.iso88591/db2cli.mo", \
-    "/opt/IBM/db2/clidriver/msg/en_US.iso88591/db2clit.mo", \
-    "/opt/IBM/db2/clidriver/msg/en_US.iso88591/db2clp.mo", \
-    "/opt/IBM/db2/clidriver/msg/en_US.iso88591/db2diag.mo", \
-    "/opt/IBM/db2/clidriver/msg/en_US.iso88591/db2sqlh.mo", \
-    "/opt/IBM/db2/clidriver/msg/en_US.iso88591/db2sql.mo", \
-    "/opt/IBM/db2/clidriver/msg/en_US.iso88591/" \
+    "/opt/IBM/db2/odbc_cli/clidriver/msg/en_US.iso88591/db2admh.mo", \
+    "/opt/IBM/db2/odbc_cli/clidriver/msg/en_US.iso88591/db2adm.mo", \
+    "/opt/IBM/db2/odbc_cli/clidriver/msg/en_US.iso88591/db2clia1.lst", \
+    "/opt/IBM/db2/odbc_cli/clidriver/msg/en_US.iso88591/db2clias.lst", \
+    "/opt/IBM/db2/odbc_cli/clidriver/msg/en_US.iso88591/db2clih.mo", \
+    "/opt/IBM/db2/odbc_cli/clidriver/msg/en_US.iso88591/db2cli.mo", \
+    "/opt/IBM/db2/odbc_cli/clidriver/msg/en_US.iso88591/db2clit.mo", \
+    "/opt/IBM/db2/odbc_cli/clidriver/msg/en_US.iso88591/db2clp.mo", \
+    "/opt/IBM/db2/odbc_cli/clidriver/msg/en_US.iso88591/db2diag.mo", \
+    "/opt/IBM/db2/odbc_cli/clidriver/msg/en_US.iso88591/db2sqlh.mo", \
+    "/opt/IBM/db2/odbc_cli/clidriver/msg/en_US.iso88591/db2sql.mo", \
+    "/opt/IBM/db2/odbc_cli/clidriver/msg/en_US.iso88591/" \
     ]
 
 COPY --from=db2_builder [ \
@@ -128,7 +119,7 @@ COPY --from=db2_builder [ \
 
 # Create files and links.
 
-WORKDIR /opt/IBM/db2/clidriver/lib
+WORKDIR /opt/IBM/db2/odbc_cli/clidriver/lib
 RUN ln -s libdb2.so.1  libdb2.so \
  && ln -s libdb2o.so.1 libdb2o.so
 

@@ -52,6 +52,7 @@ describing where we can improve.   Now on with the show...
     export GIT_REPOSITORY=docker-wrap-image-with-db2
     export GIT_ACCOUNT_DIR=~/${GIT_ACCOUNT}.git
     export GIT_REPOSITORY_DIR="${GIT_ACCOUNT_DIR}/${GIT_REPOSITORY}"
+
     ```
 
 1. Follow steps in [clone-repository](https://github.com/Senzing/knowledge-base/blob/main/HOWTO/clone-repository.md) to install the Git repository.
