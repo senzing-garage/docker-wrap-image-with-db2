@@ -1,5 +1,17 @@
 # docker-wrap-image-with-db2
 
+If you are beginning your journey with
+[Senzing](https://senzing.com/),
+please start with
+[Senzing Quick Start guides](https://docs.senzing.com/quickstart/).
+
+You are in the
+[Senzing Garage](https://github.com/senzing-garage)
+where projects are "tinkered" on.
+Although this GitHub repository may help you understand an approach to using Senzing,
+it's not considered to be "production ready" and is not considered to be part of the Senzing product.
+Heck, it may not even be appropriate for your application of Senzing!
+
 ## Synopsis
 
 Wrap a Docker image with support for Db2 database.
@@ -24,16 +36,16 @@ to add files to an existing Docker image.
 1. [License](#license)
 1. [References](#references)
 
-### Preamble
+## Preamble
 
 At [Senzing](http://senzing.com),
 we strive to create GitHub documentation in a
-"[don't make me think](https://github.com/Senzing/knowledge-base/blob/main/WHATIS/dont-make-me-think.md)" style.
+"[don't make me think](https://github.com/senzing-garage/knowledge-base/blob/main/WHATIS/dont-make-me-think.md)" style.
 For the most part, instructions are copy and paste.
-[Icons](https://github.com/Senzing/knowledge-base/blob/main/lists/legend.md)
+[Icons](https://github.com/senzing-garage/knowledge-base/blob/main/lists/legend.md)
 are used to signify additional actions by the user.
 If the instructions are not clear, please let us know by opening a new
-[Documentation issue](https://github.com/Senzing/docker-wrap-image-with-db2/issues/new?template=documentation_request.md)
+[Documentation issue](https://github.com/senzing-garage/docker-wrap-image-with-db2/issues/new?template=documentation_request.md)
 describing where we can improve.   Now on with the show...
 
 ### Expectations
@@ -41,7 +53,7 @@ describing where we can improve.   Now on with the show...
 - **Space:** This repository and demonstration require 6 GB free disk space.
 - **Time:** Budget 40 minutes to get the demonstration up-and-running, depending on CPU and network speeds.
 - **Background knowledge:** This repository assumes a working knowledge of:
-  - [Docker](https://github.com/Senzing/knowledge-base/blob/main/WHATIS/docker.md)
+  - [Docker](https://github.com/senzing-garage/knowledge-base/blob/main/WHATIS/docker.md)
 
 ## Download files
 
@@ -55,7 +67,7 @@ describing where we can improve.   Now on with the show...
 
     ```
 
-1. Follow steps in [clone-repository](https://github.com/Senzing/knowledge-base/blob/main/HOWTO/clone-repository.md) to install the Git repository.
+1. Follow steps in [clone-repository](https://github.com/senzing-garage/knowledge-base/blob/main/HOWTO/clone-repository.md) to install the Git repository.
 
 ### Downloads
 
@@ -93,7 +105,7 @@ The following steps show how to wrap existing containers with Db2 prerequisites.
     ```
 
 1. :pencil2: List the Docker images and their
-   [corresponding environment variable name](https://github.com/Senzing/knowledge-base/blob/main/lists/docker-versions-stable.sh).
+   [corresponding environment variable name](https://github.com/senzing-garage/knowledge-base/blob/main/lists/docker-versions-stable.sh).
 
    Format: `repository`;`tag`;`user` where `user` defaults to `1001`.
 
@@ -131,7 +143,7 @@ The following steps show how to wrap existing containers with Db2 prerequisites.
             --build-arg BASE_IMAGE=${BASE_IMAGE_NAME}:${BASE_IMAGE_VERSION} \
             --build-arg USER=${BASE_IMAGE_USER:-1001} \
             --tag ${BASE_IMAGE_NAME}-db2:${BASE_IMAGE_VERSION} \
-            https://github.com/Senzing/docker-wrap-image-with-db2.git#main
+            https://github.com/senzing-garage/docker-wrap-image-with-db2.git#main
     done
 
     ```
@@ -144,7 +156,7 @@ for the software container in this Docker image.
 Note that this license does not permit further distribution.
 
 This Docker image may also contain software from the
-[Senzing GitHub community](https://github.com/Senzing/)
+[Senzing GitHub community](https://github.com/senzing-garage/)
 under the
 [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).
 
@@ -162,4 +174,4 @@ with any relevant licenses for all software contained within.
 - [Development](docs/development.md)
 - [Errors](docs/errors.md)
 - [Examples](docs/examples.md)
-- [Legend](https://github.com/Senzing/knowledge-base/blob/main/lists/legend.md)
+- [Legend](https://github.com/senzing-garage/knowledge-base/blob/main/lists/legend.md)
