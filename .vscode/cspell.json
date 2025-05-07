@@ -1,0 +1,42 @@
+{
+  // Version of the setting file.  Always 0.2
+  "version": "0.2",
+  // language - current active spelling language
+  "language": "en",
+  // words - list of words to be always considered correct
+  "words": [
+      "admh",
+      "alnum",
+      "CCLA",
+      "clia",
+      "clias",
+      "clidriver",
+      "clih",
+      "CODEOWNER",
+      "conv",
+      "dsdcfgfill",
+      "dsdriver",
+      "icclib",
+      "iccs",
+      "ICCSIG",
+      "ICLA",
+      "jdbc",
+      "ldcfg",
+      "lddrg",
+      "libdb",
+      "libgsk",
+      "libicclib",
+      "linuxx",
+      "pydevproject",
+      "redoer",
+      "Senzing",
+      "senzingapi",
+      "sqlh",
+      "sqlj",
+      "stackoverflow",
+      "toplevel"
+    ],
+  "ignorePaths": [
+    ".git/**"
+  ]
+}
